@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+frontend/dist/
+frontend/.vite/
+backend/.cache/
+
+# Env and secrets
+backend/.env
+frontend/.env
+
+# Uploads (generated content)
+backend/uploads/
+
+# IDE
+.idea/
+.vscode/
+
+# Coverage / tests
+coverage/
+
+# Misc
+*.log
+*.tmp
+*.swp
