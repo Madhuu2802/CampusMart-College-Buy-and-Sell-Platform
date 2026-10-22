@@ -14,26 +14,23 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
+const cors = require('cors');
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:5174',
+  'https://campus-mart-phi.vercel.app'
+];
+
 const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-
-    const allowedOrigins = [
-      'http://localhost:5173',
-      'http://localhost:5174',
-      'http://127.0.0.1:5173',
-      'http://127.0.0.1:5174'
-    ];
-
-    const isLocalhost =
-      allowedOrigins.includes(origin) ||
-      /^http:\/\/127\.0\.[0-9]+\.[0-9]+:517[3-4]$/.test(origin);
-
-    if (isLocalhost) {
-      callback(null, true);
-    } else {
-      callback(new Error(`Not allowed by CORS: ${origin}`));
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
     }
+
+    return callback(new Error(`Not allowed by CORS: ${origin}`));
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
