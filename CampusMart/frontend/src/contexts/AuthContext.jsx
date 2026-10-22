@@ -13,7 +13,7 @@ export const useAuth = () => {
 
 // Configure axios defaults - use environment variable or detect network IP
 // Hardcoded localhost API URL for reliable connection
-axios.defaults.baseURL = 'http://localhost:3001/api';
+axios.defaults.baseURL = 'https://campusmart-college-buy-and-sell-platform.onrender.com/api';
 console.log('API Base URL set to:', axios.defaults.baseURL);
 
 // Add token to requests if available
